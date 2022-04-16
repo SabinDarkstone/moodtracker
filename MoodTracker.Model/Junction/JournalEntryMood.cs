@@ -1,12 +1,8 @@
 ﻿using MoodTracker.Model.Base;
 using MoodTracker.Model.Base.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoodTracker.Model.Junction {
+    
     public class JournalEntryMood : BaseEntity, IJunctionEntity<JournalEntry, Mood> {
 
         public JournalEntry JournalEntry { get; set; }
@@ -15,6 +11,12 @@ namespace MoodTracker.Model.Junction {
         public long MoodId { get; set; }
         public float Percent { get; set; }
 
-        public JournalEntryMood() : base() { }
+        public JournalEntryMood() : base() {
+            this.Mood = new Mood();
+            this.MoodId = -1;
+            this.JournalEntry = new JournalEntry();
+            this.JournalEntryId = -1;
+            this.Percent = 0.5f;
+        }
     }
 }

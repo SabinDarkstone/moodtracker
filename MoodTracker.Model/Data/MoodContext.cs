@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MoodTracker.Model.Base;
 using MoodTracker.Model.Data.Configure;
@@ -15,12 +9,12 @@ namespace MoodTracker.Model.Data {
 
         private readonly ILogger<MoodContext> _logger;
 
-        public DbSet<JournalEntry> JournalEntries { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Mood> Moods { get; set; }
-        public DbSet<Activity> Activities { get; set; }
-        public DbSet<ActivityCategory> ActivityCategories { get; set; }
-        public DbSet<JournalEntryMood> JournalEntryMoods { get; set; }
+        public DbSet<JournalEntry> JournalEntries { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Mood> Moods { get; set; } = null!;
+        public DbSet<Activity> Activities { get; set; } = null!;
+        public DbSet<ActivityCategory> ActivityCategories { get; set; } = null!;
+        public DbSet<JournalEntryMood> JournalEntryMoods { get; set; } = null!;
 
         public MoodContext(DbContextOptions<MoodContext> options, ILogger<MoodContext> logger) : base(options) {
             _logger = logger;
@@ -29,9 +23,16 @@ namespace MoodTracker.Model.Data {
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             _logger.LogDebug("Defining model with fluent API...");
 
+            _logger.LogInformation("Configuring User entity");
             new UserEntityTypeConfiguration().Configure(modelBuilder.Entity<User>());
+
+            _logger.LogInformation("Configuring Mood entity");
             new MoodEntityTypeConfiguration().Configure(modelBuilder.Entity<Mood>());
+
+            _logger.LogInformation("Configuring JournalEntry entity");
             new JournalEntryEntityTypeConfiguration().Configure(modelBuilder.Entity<JournalEntry>());
+
+            _logger.LogInformation("Configuring Activity entity");
             new ActivityEntityTypeConfiguration().Configure(modelBuilder.Entity<Activity>());
         }
 
