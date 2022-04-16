@@ -3,7 +3,7 @@ using MoodTracker.Model.Interfaces;
 using MoodTracker.Model.Junction;
 
 namespace MoodTracker.Model {
-    public class Mood : BaseEntity, INamedEntity {
+    public class Mood : BaseEntity, INamed {
         
         public string Name { get; set; }
         public MoodType MoodType { get; set; }

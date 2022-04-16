@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MoodTracker.Model.Interfaces {
-    public interface INamedEntity {
+    
+    public interface INamed {
         public string Name { get; set; }
     }
 }

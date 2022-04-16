@@ -6,7 +6,7 @@ namespace MoodTracker.Model {
     
     public class Activity : TimestampEntity, IEntity<ActivityDTO> {
         public string Name { get; set; }
-        public ActivityCategory? Category { get; set; }
+        public Category? Category { get; set; }
         public long ActivityCategoryId { get; set; }
         public DateTime Date { get; set; }
 

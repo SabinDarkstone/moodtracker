@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoodTracker.Model.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoodTracker.Interfaces {
+
     public interface IDefaultEntityAccess<TEntity, TDto> where TEntity : BaseEntity where TDto : BaseDTO {
 
         [HttpGet]
