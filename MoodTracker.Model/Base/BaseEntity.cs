@@ -1,11 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MoodTracker.Model.Base {
+﻿namespace MoodTracker.Model.Base {
+    
     public abstract class BaseEntity {
 
         public long Id { get; set; }
@@ -14,6 +8,8 @@ namespace MoodTracker.Model.Base {
 
         public BaseEntity() {
             this.IsDeleted = false;
+            this.Id = -1;
+            this.Secret = "Secret";
         }
 
         public BaseEntity(BaseDTO dto) {

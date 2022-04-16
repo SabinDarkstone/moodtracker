@@ -1,9 +1,4 @@
 ﻿using MoodTracker.Model.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoodTracker.Model.Base {
     public abstract class TimestampEntity : BaseEntity {
@@ -12,7 +7,8 @@ namespace MoodTracker.Model.Base {
         public DateTime LastModifedDate { get; set; }
 
         public TimestampEntity() : base() {
-            
+            this.CreatedDate = DateTime.Now - TimeSpan.FromDays(1);
+            this.LastModifedDate = DateTime.Now;
         }
 
         public TimestampEntity(TimestampDTO timestamp) : base(timestamp) {

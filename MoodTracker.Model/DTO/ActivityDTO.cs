@@ -1,12 +1,7 @@
-﻿using MoodTracker.Model.Base;
-using MoodTracker.Model.Base.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MoodTracker.Model.Base.Interfaces;
 
 namespace MoodTracker.Model.DTO {
+
     public class ActivityDTO : TimestampDTO, IDto<Activity> {
 
         public string Name { get; set; }
@@ -14,7 +9,12 @@ namespace MoodTracker.Model.DTO {
         public long CategoryId { get; set; }
         public DateTime Date { get; set; }
 
-        public ActivityDTO() : base() { }
+        public ActivityDTO() : base() {
+            this.Name = "Default";
+            this.CategoryName = null;
+            this.CategoryId = -1;
+            this.Date = DateTime.Now;
+        }
 
         public ActivityDTO(Activity activity) : base(activity) {
             this.Name = activity.Name;
