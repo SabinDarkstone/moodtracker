@@ -15,7 +15,8 @@ builder.Services.AddLogging(builder =>
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<MoodContext>(options => {
-    options.UseInMemoryDatabase("Mood");
+    // options.UseInMemoryDatabase("Mood");
+    options.UseSqlite(builder.Configuration.GetConnectionString("MoodContext"));
 });
 
 builder.Services.AddEndpointsApiExplorer();
